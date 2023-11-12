@@ -17,28 +17,20 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-
 	buffer = malloc(1024 * sizeof(char));
-
 	if (buffer == NULL)
-		return -1;
+		return (-1);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
-		{
 			buffer[count] = format[i];
-		}
 		else
 		{
 			if (format[i + 1] == 'c')
-			{
 				buffer[count] = va_arg(args, int);
-			}
-
 			else if (format[i + 1] == 's')
 			{
 				str = va_arg(args, char *);
-
 				for (j = 0; str[j] != '\0'; j++)
 				{
 					buffer[count] = str[j];
@@ -46,9 +38,7 @@ int _printf(const char *format, ...)
 				}
 			}
 			else if (format[i + 1] == '%')
-			{
 				buffer[count] = '%';
-			}
 			i++;
 		}
 		count++;
