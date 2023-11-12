@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
 /**
  *_printf - produces output according to a format
  *@format: a list of types of arguments passed to the function
@@ -9,7 +10,7 @@
  */
 int _printf(const char *format, ...)
 {
-	char buffer[1024] = "", *str;
+	char *buffer, *str;
 
 	int i, j, count = 0;
 
@@ -17,18 +18,27 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
+	buffer = malloc(1024 * sizeof(char));
+
+	if (buffer == NULL)
+		return -1;
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
+		{
 			buffer[count] = format[i];
+		}
 		else
 		{
 			if (format[i + 1] == 'c')
+			{
 				buffer[count] = va_arg(args, int);
+			}
 
 			else if (format[i + 1] == 's')
 			{
 				str = va_arg(args, char *);
+
 				for (j = 0; str[j] != '\0'; j++)
 				{
 					buffer[count] = str[j];
@@ -36,11 +46,15 @@ int _printf(const char *format, ...)
 				}
 			}
 			else if (format[i + 1] == '%')
+			{
 				buffer[count] = '%';
+			}
 			i++;
 		}
 		count++;
 	}
 	va_end(args);
-	return (write(1, buffer, count));
+	write(1, buffer, count);
+	free(buffer);
+	return (count);
 }
