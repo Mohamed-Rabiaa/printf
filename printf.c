@@ -43,9 +43,10 @@ int _printf(const char *format, ...)
 				count += printc('%');
 				i++;
 				break;
+			case '\0':
+				return (-1);
 			default:
 				count += printc(format[i]);
-
 				break;
 			}
 		}

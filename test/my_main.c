@@ -37,10 +37,28 @@ int main(void)
     printf("%c\n", "Hi");
     _printf("%c\n", "Hi");
 
-    printf("This is %c %s n%n% yes\n", 'V', "TExt",'%');
-    _printf("This is %c %s n%n% yes\n", 'V', "TExt",'%');
+    printf("This is %c %s n%%b yes\n", 'V', "TExt",'%');
+    _printf("This is %c %s n%%b yes\n", 'V', "TExt",'%');
 
-    /*printf("%s", 'u');*/
-    _printf("%s", 'u');
+
+    /*Print a table of data.*/
+    printf("| Name | Age | Occupation |\n");
+    printf("| Snehasish | 25 | AI Engineer |\n");
+    printf("| Alice | 30 | Software Engineer |\n");
+
+
+    /*Print a table of data.*/
+    _printf("| Name | Age | Occupation |\n");
+    _printf("| Snehasish | 25 | AI Engineer |\n");
+    _printf("| Alice | 30 | Software Engineer |\n");
+
+    printf("%s %s\n", "Today is", __DATE__);
+    _printf("%s %s\n", "Today is", __DATE__);
+
+    printf("%s %s\n", "The time is", __TIME__);
+   _printf("%s %s\n", "The time is", __TIME__);
+
+   printf("%");
+   _printf("%");
     return (0);
 }
