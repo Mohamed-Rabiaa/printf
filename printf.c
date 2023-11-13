@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 			case 's':
 				str = va_arg(args, char *);
 				if (str == NULL)
-					prints("(null)");
+					count += prints("(null)");
 				else
 				{
 					count += prints(str);
