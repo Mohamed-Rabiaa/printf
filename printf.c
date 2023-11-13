@@ -26,19 +26,27 @@ int _printf(const char *format, ...)
 			buffer[count] = format[i];
 		else
 		{
-			if (format[i + 1] == 'c')
-				buffer[count] = va_arg(args, int);
-			else if (format[i + 1] == 's')
+			switch (format[i + 1])
 			{
+			case 'c':
+				buffer[count] = va_arg(args, int);
+				break;
+			case 's':
 				str = va_arg(args, char *);
 				for (j = 0; str[j] != '\0'; j++)
 				{
 					buffer[count] = str[j];
 					count++;
 				}
-			}
-			else if (format[i + 1] == '%')
+				break;
+			case '%':
 				buffer[count] = '%';
+				break;
+			default:
+				buffer[count] = '%';
+				buffer[count + 1] = format[i];
+				count += 2;
+			}
 			i++;
 		}
 		count++;
