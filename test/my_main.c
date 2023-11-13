@@ -60,5 +60,9 @@ int main(void)
 
    printf("%");
    _printf("%");
+
+   printf("%s", NULL);
+   _printf("%s", NULL);
+
     return (0);
 }

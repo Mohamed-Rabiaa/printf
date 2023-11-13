@@ -1,5 +1,5 @@
 #include <stdarg.h>
-#include <stdlib.h>
+11;rgb:0000/0000/0000#include <stdlib.h>
 #include "main.h"
 
 int printc(char c);
@@ -36,8 +36,13 @@ int _printf(const char *format, ...)
 				break;
 			case 's':
 				str = va_arg(args, char *);
-				count += prints(str);
-				i++;
+				if (str == NULL)
+					prints("(null)");
+				else
+				{
+					count += prints(str);
+					i++;
+				}
 				break;
 			case '%':
 				count += printc('%');
