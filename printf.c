@@ -1,6 +1,10 @@
 #include <stdarg.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include "main.h"
+
+void printc(char c);
+int prints(char *s);
+
 /**
  *_printf - produces output according to a format
  *@format: a list of types of arguments passed to the function
@@ -10,49 +14,67 @@
  */
 int _printf(const char *format, ...)
 {
-	char *buffer, *str;
+	char *str;
 
-	int i, j, count = 0;
+	int i, count = 0;
 
 	va_list args;
 
 	va_start(args, format);
-	buffer = malloc(1024 * sizeof(char));
-	if (buffer == NULL)
-		return (-1);
+
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
-			buffer[count] = format[i];
+			printc(format[i]);
 		else
 		{
 			switch (format[i + 1])
 			{
 			case 'c':
-				buffer[count] = va_arg(args, int);
+				printc(va_arg(args, int));
 				break;
 			case 's':
 				str = va_arg(args, char *);
-				for (j = 0; str[j] != '\0'; j++)
-				{
-					buffer[count] = str[j];
-					count++;
-				}
+				prints(str);
 				break;
 			case '%':
-				buffer[count] = '%';
+				printc('%');
 				break;
 			default:
-				buffer[count] = '%';
-				buffer[count + 1] = format[i];
-				count += 2;
+				printc(format[i]);
+				printc(format[i + 1]);
+				break;
 			}
 			i++;
 		}
 		count++;
 	}
 	va_end(args);
-	write(1, buffer, count);
-	free(buffer);
 	return (count);
+}
+
+/**
+ *printc - prints a char
+ *@c: the char to be prented
+ */
+void printc(char c)
+{
+	_putchar(c);
+}
+
+/**
+ *prints - prints a string
+ *@s: the string to print
+ *
+ *Return: the length of the string
+ */
+int prints(char *s)
+{
+	int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		_putchar(s[i]);
+	}
+	return (i);
 }
