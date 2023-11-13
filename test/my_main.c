@@ -34,5 +34,7 @@ int main(void)
     printf("%h s\n", 'c');
     _printf("%h m\n", 'c');
 
+    printf("%c\n", "Hi");
+    _printf("%c\n", "Hi");
     return (0);
 }

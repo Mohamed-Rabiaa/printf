@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "main.h"
 
-void printc(char c);
+int printc(char c);
 int prints(char *s);
 
 /**
@@ -25,29 +25,30 @@ int _printf(const char *format, ...)
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
-			printc(format[i]);
+			count += printc(format[i]);
 		else
 		{
 			switch (format[i + 1])
 			{
 			case 'c':
-				printc(va_arg(args, int));
+				count += printc(va_arg(args, int));
+				i++;
 				break;
 			case 's':
 				str = va_arg(args, char *);
-				prints(str);
+				count += prints(str);
+				i++;
 				break;
 			case '%':
-				printc('%');
+				count += printc('%');
+				i++;
 				break;
 			default:
-				printc(format[i]);
+				count += printc(format[i]);
 
 				break;
 			}
-			i++;
 		}
-		count++;
 	}
 	va_end(args);
 	return (count);
@@ -56,10 +57,13 @@ int _printf(const char *format, ...)
 /**
  *printc - prints a char
  *@c: the char to be prented
+ *
+ *Return: on success 1
+ *on erro -1
  */
-void printc(char c)
+int  printc(char c)
 {
-	_putchar(c);
+	return (_putchar(c));
 }
 
 /**
