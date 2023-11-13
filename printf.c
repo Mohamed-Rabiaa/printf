@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include "main.h"
 
-int printc(char c);
-int prints(char *s);
+int print_char(char c);
+int print_string(char *s);
+int print_int(int num);
 
 /**
  *_printf - produces output according to a format
@@ -30,37 +31,38 @@ int _printf(const char *format, ...)
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
-			count += printc(format[i]);
+			count += print_char(format[i]);
 		else
 		{
 			switch (format[i + 1])
 			{
 			case 'c':
-				count += printc(va_arg(args, int));
+				count += print_char(va_arg(args, int));
 				i++;
 				break;
 			case 's':
 				str = va_arg(args, char *);
 				if (str == NULL)
-					count += prints("(null)");
+					count += print_string("(null)");
 				else
 				{
-					count += prints(str);
+					count += print_string(str);
 					i++;
 				}
 				break;
 			case '%':
-				count += printc('%');
+				count += print_char('%');
 				i++;
 				break;
 			case 'i':
 			case 'd':
 				count += print_int(va_arg(args, int));
+				i++;
 				break;
 			case '\0':
 				return (-1);
 			default:
-				count += printc(format[i]);
+				count += print_char(format[i]);
 				break;
 			}
 		}
@@ -76,7 +78,7 @@ int _printf(const char *format, ...)
  *Return: on success 1
  *on erro -1
  */
-int  printc(char c)
+int  print_char(char c)
 {
 	return (_putchar(c));
 }
@@ -87,7 +89,7 @@ int  printc(char c)
  *
  *Return: the length of the string
  */
-int prints(char *s)
+int print_string(char *s)
 {
 	int i;
 

@@ -28,8 +28,11 @@ int main(void)
      len = _printf("Percent:[%%]\n");
     len2 = printf("Percent:[%%]\n");
 
-    printf("Len:[%d]\n", len);
+    _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
+
+    printf("%d\n", -15);
+    _printf("%d\n", -15);
 
     printf("%h s\n", 'c');
     _printf("%h m\n", 'c');
