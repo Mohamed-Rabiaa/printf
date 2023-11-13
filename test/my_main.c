@@ -30,5 +30,9 @@ int main(void)
 
     printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
+
+    printf("%h s\n", 'c');
+    _printf("%h m\n", 'c');
+
     return (0);
 }
