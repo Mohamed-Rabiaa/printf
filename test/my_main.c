@@ -61,8 +61,8 @@ int main(void)
    printf("%");
    _printf("%");
 
-   printf("%s", NULL);
-   _printf("%s", NULL);
+   printf("%s/n", NULL);
+   _printf("%s/n", NULL);
 
     return (0);
 }
