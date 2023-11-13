@@ -53,6 +53,10 @@ int _printf(const char *format, ...)
 				count += printc('%');
 				i++;
 				break;
+			case 'i':
+			case 'd':
+				count += print_int(va_arg(args, int));
+				break;
 			case '\0':
 				return (-1);
 			default:
@@ -92,4 +96,33 @@ int prints(char *s)
 		_putchar(s[i]);
 	}
 	return (i);
+}
+
+/**
+ *print_int - prints an integer and returns its number of digits
+ *@num: the integer to print
+ *
+ *Return: the number of digits in num
+ */
+int print_int(int num)
+{
+	unsigned int n;
+
+	int digitcount = 0;
+
+	n = num;
+
+	if (num < 0)
+	{
+		_putchar('-');
+		n = -num;
+		digitcount++;
+	}
+
+	if (n / 10 != 0)
+		print_int(n / 10);
+	_putchar((n % 10) + '0');
+	digitcount++;
+
+	return (digitcount);
 }
