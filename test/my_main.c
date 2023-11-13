@@ -36,5 +36,11 @@ int main(void)
 
     printf("%c\n", "Hi");
     _printf("%c\n", "Hi");
+
+    printf("This is %c %s n%n% yes\n", 'V', "TExt",'%');
+    _printf("This is %c %s n%n% yes\n", 'V', "TExt",'%');
+
+    /*printf("%s", 'u');*/
+    _printf("%s", 'u');
     return (0);
 }
