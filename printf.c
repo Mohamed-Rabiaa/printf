@@ -72,7 +72,7 @@ int _printf(const char *format, ...)
 }
 
 /**
- *printc - prints a char
+ *print_char - prints a char
  *@c: the char to be prented
  *
  *Return: on success 1
@@ -84,7 +84,7 @@ int  print_char(char c)
 }
 
 /**
- *prints - prints a string
+ *print_string - prints a string
  *@s: the string to print
  *
  *Return: the length of the string
