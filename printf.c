@@ -64,6 +64,16 @@ int _printf(const char *format, ...)
 						      , 0);
 				i++;
 				break;
+			case 'u':
+				count += print_unsigned_int(va_arg(args,
+							unsigned int), 0);
+				i++;
+				break;
+			case 'o':
+				count += print_octal(va_arg(args,
+							unsigned int), 0);
+				i++;
+				break;
 			case '\0':
 				return (-1);
 			default:

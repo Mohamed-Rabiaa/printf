@@ -54,5 +54,20 @@ int main(void)
  
 
    _printf("%b\n", 9858);
-    return (0);
+
+
+   printf("%u\n", 888);
+   _printf("%u\n", 888);
+
+   printf("%u\n", -888);
+   _printf("%u\n", -888);
+
+
+   printf("%o\n", 55);
+   _printf("%o\n", 55);
+
+
+
+
+   return (0);
 }
