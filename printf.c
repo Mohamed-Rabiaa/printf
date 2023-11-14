@@ -4,7 +4,7 @@
 
 int print_char(char c);
 int print_string(char *s);
-int print_int(int num);
+int print_int(int num, int digitcoutn);
 
 /**
  *_printf - produces output according to a format
@@ -56,7 +56,7 @@ int _printf(const char *format, ...)
 				break;
 			case 'i':
 			case 'd':
-				count += print_int(va_arg(args, int));
+				count += print_int(va_arg(args, int, 0));
 				i++;
 				break;
 			case '\0':
@@ -103,14 +103,13 @@ int print_string(char *s)
 /**
  *print_int - prints an integer and returns its number of digits
  *@num: the integer to print
+ *@digitcount: the number of digits in num
  *
  *Return: the number of digits in num
  */
-int print_int(int num)
+int print_int(int num, int digitcount)
 {
 	unsigned int n;
-
-	int digitcount = 0;
 
 	n = num;
 
@@ -122,7 +121,7 @@ int print_int(int num)
 	}
 
 	if (n / 10 != 0)
-		print_int(n / 10);
+		digitcount = print_int(n / 10, digitcount);
 	_putchar((n % 10) + '0');
 	digitcount++;
 
