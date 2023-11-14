@@ -97,18 +97,6 @@ int _printf(const char *format, ...)
 }
 
 /**
- *print_char - prints a char
- *@c: the char to be prented
- *
- *Return: on success 1
- *on erro -1
- */
-int  print_char(char c)
-{
-	return (_putchar(c));
-}
-
-/**
  *print_string - prints a string
  *@s: the string to print
  *
