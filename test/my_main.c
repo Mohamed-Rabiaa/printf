@@ -49,23 +49,10 @@ int main(void)
     printf("| Snehasish | 25 | AI Engineer |\n");
     printf("| Alice | 30 | Software Engineer |\n");
 
-
-    /*Print a table of data.*/
-    _printf("| Name | Age | Occupation |\n");
-    _printf("| Snehasish | 25 | AI Engineer |\n");
-    _printf("| Alice | 30 | Software Engineer |\n");
-
-    printf("%s %s\n", "Today is", __DATE__);
-    _printf("%s %s\n", "Today is", __DATE__);
-
-    printf("%s %s\n", "The time is", __TIME__);
-   _printf("%s %s\n", "The time is", __TIME__);
-
    printf("%");
    _printf("%");
+ 
 
-   printf("%s/n", NULL);
-   _printf("%s/n", NULL);
-
+   _printf("%b\n", 9858);
     return (0);
 }

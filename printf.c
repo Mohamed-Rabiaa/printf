@@ -59,6 +59,11 @@ int _printf(const char *format, ...)
 				count += print_int(va_arg(args, int), 0);
 				i++;
 				break;
+			case 'b':
+				count += print_binary(va_arg(args, unsigned int)
+						      , 0);
+				i++;
+				break;
 			case '\0':
 				return (-1);
 			default:
