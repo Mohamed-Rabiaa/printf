@@ -74,6 +74,16 @@ int _printf(const char *format, ...)
 							unsigned int), 0);
 				i++;
 				break;
+			case 'x':
+				count += print_hexadecimal(va_arg(args,
+						unsigned int), 0, 'x');
+				i++;
+				break;
+			case 'X':
+				count += print_hexadecimal(va_arg(args,
+						unsigned int), 0, 'X');
+				i++;
+				break;
 			case '\0':
 				return (-1);
 			default:

@@ -6,5 +6,7 @@ int _putchar(char c);
 int print_binary(unsigned int num, int digitcount);
 int print_unsigned_int(unsigned int num, int digitcount);
 int print_octal(unsigned int num, int digitscount);
+int print_hexadecimal(unsigned int num, int digitscount, char c);
+
 
 #endif

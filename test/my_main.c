@@ -66,8 +66,17 @@ int main(void)
    printf("%o\n", 55);
    _printf("%o\n", 55);
 
+   printf("%x\n", 55);
+   _printf("%x\n", 55);
 
+   printf("%X\n", 55);
+   _printf("%X\n", 55);
 
+    printf("%x\n", 1455);
+   _printf("%x\n", 1455);
+   
+    printf("%X\n", 1455);
+   _printf("%X\n", 1455);
 
    return (0);
 }
