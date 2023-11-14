@@ -1,3 +1,4 @@
+#include "main.h"
 /**
  *print_int - prints an integer and returns its number of digits
  *@num: the integer to print
