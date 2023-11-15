@@ -39,13 +39,13 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 			case 'c':
-				buffer_index += add_char(va_arg(args,int),
+				buffer_index += add_char(va_arg(args, int),
 							buffer, buffer_index);
 				i++;
 				break;
 			case 's':
 				str = va_arg(args, char *);
-      				buffer_index += add_string(str, buffer,
+				buffer_index += add_string(str, buffer,
 							   buffer_index);
 				i++;
 				break;
