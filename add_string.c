@@ -17,6 +17,8 @@ int add_string(char *s, char *buffer, int buffer_index)
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
+		if (buffer_index >= BUFF_SIZE)
+			break;
 		buffer[buffer_index] = s[i];
 		buffer_index++;
 	}
