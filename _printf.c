@@ -39,21 +39,14 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 			case 'c':
-				buffer[buffer_index] += add_char(va_arg(args,
-									int),
+				buffer_index += add_char(va_arg(args,int),
 							buffer, buffer_index);
 				i++;
 				break;
 			case 's':
 				str = va_arg(args, char *);
-				if (str == NULL)
-					buffer_index += add_string("(null)",
-							 buffer, buffer_index);
-				else
-				{
-					buffer_index += add_string(str,
-						buffer, buffer_index);
-				}
+      				buffer_index += add_string(str, buffer,
+							   buffer_index);
 				i++;
 				break;
 			case '%':
@@ -73,8 +66,8 @@ int _printf(const char *format, ...)
 				i++;
 				break;
 			case 'u':
-				buffer[buffer_index] += add_unsigned_int(va_arg(
-				     args,unsigned int), buffer, buffer_index);
+				buffer_index += add_unsigned_int(va_arg(
+				     args, unsigned int), buffer, buffer_index);
 				i++;
 				break;
 			case 'o':
@@ -100,9 +93,12 @@ int _printf(const char *format, ...)
 				break;
 			}
 		}
+		buffer[buffer_index] = '\0';
 	if (buffer_index == BUFF_SIZE)
-		write(1, buffer, 1);
+		write(1, buffer, buffer_index);
 }
+	if (buffer_index > 0)
+		write(1, buffer, buffer_index);
 va_end(args);
 return (buffer_index);
 }

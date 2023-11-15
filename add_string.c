@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 /**
  *add_string - add a string to the buffer
@@ -10,6 +11,9 @@
 int add_string(char *s, char *buffer, int buffer_index)
 {
 	int i;
+
+	if (s == NULL)
+		s = "(null)";
 
 	for (i = 0; s[i] != '\0'; i++)
 	{

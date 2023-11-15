@@ -22,7 +22,7 @@ int add_int(int num, char *buffer, int buffer_index)
 
 	if (n / 10 != 0)
 		buffer_index = add_int(n / 10, buffer, buffer_index);
-	buffer [buffer_index] = (n % 10) + '0';
+	buffer[buffer_index] = (n % 10) + '0';
 	buffer_index++;
 
 	return (buffer_index);

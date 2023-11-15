@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- *print_char - adds a char to a buffer
+ *add_char - adds a char to a buffer
  *@c: the char to add
  *@buffer: the buffer
  *@buffer_index: the index of the buffer
