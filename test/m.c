@@ -1,0 +1,39 @@
+#include <limits.h>
+#include <stdio.h>
+#include "main.h"
+
+/**
+ * main - Entry point
+ *
+ * Return: Always 0
+ */
+int main(void)
+{
+
+	char buffer [1024];
+
+	int index = 0;
+	
+	buffer[0] = 'T';
+	buffer[1] = 'W';
+	index += 2;
+
+	index = add_int(5555, buffer, index);
+
+
+	index  = add_char('Y', buffer, index);
+
+        index = add_string(" Hello ", buffer, index);
+
+	index = add_binary(55, buffer, index);
+
+        index = add_unsigned_int(55, buffer, index);
+
+        index = add_octal(55, buffer, index);
+
+	index = add_hexadecimal(55, buffer, index, 'x');
+	        index = add_hexadecimal(55, buffer, index, 'X');
+	printf("%s\n", buffer);
+	printf("Index of buffer: %d\n", index);
+	return (0);
+}

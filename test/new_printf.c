@@ -2,10 +2,6 @@
 #include <stdlib.h>
 #include "main.h"
 
-int print_char(char c);
-int print_string(char *s);
-int print_int(int num, int digitcoutn);
-
 /**
  *_printf - produces output according to a format
  *@format: a list of types of arguments passed to the function
@@ -17,7 +13,9 @@ int _printf(const char *format, ...)
 {
 	char *str;
 
-	int i, count = 0;
+	char buffer[1024];
+
+	int i, j, count = 0;
 
 	va_list args;
 
@@ -31,13 +29,17 @@ int _printf(const char *format, ...)
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
-			count += print_char(format[i]);
+		{
+			buffer[count] = format[i];
+			count++;
+		}
 		else
 		{
 			switch (format[i + 1])
 			{
 			case 'c':
-				count += print_char(va_arg(args, int));
+				buffer[count] = va_arg(args, int);
+				count++;
 				i++;
 				break;
 			case 's':
@@ -46,17 +48,23 @@ int _printf(const char *format, ...)
 					count += print_string("(null)");
 				else
 				{
-					count += print_string(str);
+					for (j = 0; str[j] != '\0'; j++)
+					{
+						buffer[count] = str[j];
+						count++;
+					}
 					i++;
 				}
 				break;
 			case '%':
-				count += print_char('%');
+				buffer[count] = '%';
+				count++;
 				i++;
 				break;
 			case 'i':
 			case 'd':
-				count += print_int(va_arg(args, int), 0);
+				count += add_int(va_arg(args, int),
+						 buffer, count);
 				i++;
 				break;
 			case 'b':
@@ -65,8 +73,9 @@ int _printf(const char *format, ...)
 				i++;
 				break;
 			case 'u':
-				count += print_unsigned_int(va_arg(args,
-							unsigned int), 0);
+				buffer[count] = va_arg(args, unsigned int) +
+					'0';
+				count++;
 				i++;
 				break;
 			case 'o':
