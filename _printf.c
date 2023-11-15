@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 
 	char buffer[BUFF_SIZE];
 
-	int i, j, buffer_index = 0;
+	int i, buffer_index = 0;
 
 	va_list args;
 
@@ -39,14 +39,16 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 			case 'c':
-				buffer[count] += add_char(va_arg(args, int),
+				buffer[buffer_index] += add_char(va_arg(args,
+									int),
 							buffer, buffer_index);
 				i++;
 				break;
 			case 's':
 				str = va_arg(args, char *);
 				if (str == NULL)
-					buffer_index += add_string("(null)");
+					buffer_index += add_string("(null)",
+							 buffer, buffer_index);
 				else
 				{
 					buffer_index += add_string(str,
@@ -71,8 +73,8 @@ int _printf(const char *format, ...)
 				i++;
 				break;
 			case 'u':
-				buffer[buffer_index] = va_arg(args,
-					unsigned int), buffer, buffer_index);
+				buffer[buffer_index] += add_unsigned_int(va_arg(
+				     args,unsigned int), buffer, buffer_index);
 				i++;
 				break;
 			case 'o':
@@ -102,5 +104,5 @@ int _printf(const char *format, ...)
 		write(1, buffer, 1);
 }
 va_end(args);
-return (count);
+return (buffer_index);
 }
