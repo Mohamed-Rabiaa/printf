@@ -39,13 +39,13 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 			case 'c':
-				buffer_index += add_char(va_arg(args, int),
+				buffer_index = add_char(va_arg(args, int),
 							buffer, buffer_index);
 				i++;
 				break;
 			case 's':
 				str = va_arg(args, char *);
-				buffer_index += add_string(str, buffer,
+				buffer_index = add_string(str, buffer,
 							   buffer_index);
 				i++;
 				break;
@@ -56,32 +56,32 @@ int _printf(const char *format, ...)
 				break;
 			case 'i':
 			case 'd':
-				buffer_index += add_int(va_arg(args, int),
+				buffer_index = add_int(va_arg(args, int),
 						 buffer, buffer_index);
 				i++;
 				break;
 			case 'b':
-				buffer_index += add_binary(va_arg(args,
+				buffer_index = add_binary(va_arg(args,
 					unsigned int), buffer, buffer_index);
 				i++;
 				break;
 			case 'u':
-				buffer_index += add_unsigned_int(va_arg(
+				buffer_index = add_unsigned_int(va_arg(
 				     args, unsigned int), buffer, buffer_index);
 				i++;
 				break;
 			case 'o':
-				buffer_index += add_octal(va_arg(args,
+				buffer_index = add_octal(va_arg(args,
 					unsigned int), buffer, buffer_index);
 				i++;
 				break;
 			case 'x':
-				buffer_index += add_hexadecimal(va_arg(args,
+				buffer_index = add_hexadecimal(va_arg(args,
 				unsigned int), buffer, buffer_index, 'x');
 				i++;
 				break;
 			case 'X':
-				buffer_index += add_hexadecimal(va_arg(args,
+				buffer_index = add_hexadecimal(va_arg(args,
 				unsigned int), buffer, buffer_index, 'X');
 				i++;
 				break;
@@ -98,7 +98,10 @@ int _printf(const char *format, ...)
 		write(1, buffer, buffer_index);
 }
 	if (buffer_index > 0)
+	{
+		buffer[buffer_index] = '\0';
 		write(1, buffer, buffer_index);
+	}
 va_end(args);
 return (buffer_index);
 }
