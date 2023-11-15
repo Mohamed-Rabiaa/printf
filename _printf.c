@@ -95,7 +95,10 @@ int _printf(const char *format, ...)
 		}
 		buffer[buffer_index] = '\0';
 	if (buffer_index == BUFF_SIZE)
+	{
 		write(1, buffer, buffer_index);
+		buffer_index = 0;
+	}
 }
 	if (buffer_index > 0)
 	{
