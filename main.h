@@ -4,9 +4,11 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
+int _str_len(const char *s);
 int add_char(char c, char *buffer, int buffer_index);
 int add_string(char *s, char *buffer, int buffer_index);
 int add_string2(char *str, char *buffer, int buffer_index);
+int add_rev_string(char *str, char *buffer, int buffer_index);
 int add_int(int num, char *buffer, int buffer_index);
 int add_binary(unsigned int num, char *buffer,int buffer_index);
 int add_unsigned_int(unsigned int num, char *buffer, int buffer_index);

@@ -1,0 +1,20 @@
+/**
+ *_str_len - returns the length of a string
+ *@s: the string
+ *
+ *Return: the length of the string or -1 if the string is NULL
+ */
+int _str_len(const char *s)
+{
+        int i = 0;
+
+	if (s == 0)
+		return (-1);
+        while (*s)
+        {
+                i++;
+                s++;
+        }
+
+        return (i);
+}

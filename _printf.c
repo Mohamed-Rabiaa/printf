@@ -12,8 +12,6 @@
  */
 int _printf(const char *format, ...)
 {
-	char *str;
-
 	char buffer[BUFF_SIZE];
 
 	int i, buffer_index = 0;
@@ -44,15 +42,18 @@ int _printf(const char *format, ...)
 				i++;
 				break;
 			case 's':
-				str = va_arg(args, char *);
-				buffer_index = add_string(str, buffer,
-							   buffer_index);
+				buffer_index = add_string(va_arg(args, char *),
+				buffer, buffer_index);
 				i++;
 				break;
 			case 'S':
-				str = va_arg(args, char *);
-				buffer_index = add_string2(str, buffer,
-							   buffer_index);
+				buffer_index = add_string2(va_arg(args, char *),
+							  buffer, buffer_index);
+				i++;
+				break;
+			case 'r':
+				buffer_index = add_rev_string(va_arg(args,
+						char*), buffer, buffer_index);
 				i++;
 				break;
 			case '%':

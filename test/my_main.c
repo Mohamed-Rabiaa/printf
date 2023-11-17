@@ -80,5 +80,12 @@ int main(void)
    addr = &len;
    printf("%p\n", addr);
    _printf("%p\n", addr);
+
+
+   _printf("%r\n", "well done");
+
+
+
+
    return (0);
 }
