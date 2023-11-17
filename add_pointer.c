@@ -20,6 +20,6 @@ int add_pointer(void *ptr, char *buffer, int buffer_index)
 	buffer_index = add_char('0', buffer, buffer_index);
 	buffer_index = add_char('x', buffer, buffer_index);
 
-	buffer_index = add_hexadecimal(num, buffer, buffer_index, 'x');
+	buffer_index = add_hex(num, buffer, buffer_index, 'x');
 	return (buffer_index);
 }

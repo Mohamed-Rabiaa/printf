@@ -78,6 +78,7 @@ int main(void)
    _printf("%S\n", "hi\nw");
 
    addr = &len;
+   printf("%p\n", addr);
    _printf("%p\n", addr);
    return (0);
 }

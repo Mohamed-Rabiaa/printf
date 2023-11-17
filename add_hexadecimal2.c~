@@ -1,0 +1,51 @@
+#include "main.h"
+/**
+ *add_hexadecimal - converts a number to hexadecimal and prints it
+ *@num: the number to convert and print
+ *@buffer: the buffer
+ *@buffer_index: the index of the buffer
+ *@c: the case
+ *
+ *Return: buffer_index
+ */
+int add_hexadecimal(unsigned int num, char *buffer, int buffer_index,
+		      char c)
+{
+	unsigned int n, r;
+
+	n = num;
+	if (n / 16 != 0)
+		buffer_index = add_hexadecimal(n / 16, buffer, buffer_index, c);
+	r = n % 16;
+	if (r < 10)
+		buffer[buffer_index] = r + '0';
+	else
+	{
+		if (r == 10 && c == 'x')
+			buffer[buffer_index] = 'a';
+		else if (r == 10 && c == 'X')
+			buffer[buffer_index] = 'A';
+		if (r == 11 && c == 'x')
+			buffer[buffer_index] = 'b';
+		else if (r == 11 && c == 'B')
+			buffer[buffer_index] = 'B';
+		if (r == 12 && c == 'x')
+			buffer[buffer_index] = 'c';
+		else if (r == 12 && c == 'X')
+			buffer[buffer_index] = 'C';
+		if (r == 13 && c == 'x')
+			buffer[buffer_index] = 'd';
+		else if (r == 13 && c == 'X')
+			buffer[buffer_index] = 'D';
+		if (r == 14 && c == 'x')
+			buffer[buffer_index] = 'e';
+		else if (r == 14 && c == 'X')
+			buffer[buffer_index] = 'E';
+		if (r == 15 && c == 'x')
+			buffer[buffer_index] = 'f';
+		if (r == 15 && c == 'X')
+			buffer[buffer_index] = 'F';
+	}
+		buffer_index++;
+		return (buffer_index);
+}

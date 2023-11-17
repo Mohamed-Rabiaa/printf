@@ -12,6 +12,7 @@ int add_binary(unsigned int num, char *buffer,int buffer_index);
 int add_unsigned_int(unsigned int num, char *buffer, int buffer_index);
 int add_octal(unsigned int num, char *buffer, int buffer_index);
 int add_hexadecimal(unsigned int num, char *buffer, int buffer_index, char c);
+int add_hex(unsigned long int num, char *buffer, int buffer_index, char c);
 int add_pointer(void *ptr, char *buffer, int buffer_index);
 
 #endif
