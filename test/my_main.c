@@ -73,5 +73,6 @@ int main(void)
     printf("%X\n", 1455);
    _printf("%X\n", 1455);
 
+   _printf("%S\n", "hi\nw");
    return (0);
 }

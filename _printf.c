@@ -49,6 +49,12 @@ int _printf(const char *format, ...)
 							   buffer_index);
 				i++;
 				break;
+			case 'S':
+				str = va_arg(args, char *);
+				buffer_index = add_string2(str, buffer,
+							   buffer_index);
+				i++;
+				break;
 			case '%':
 				buffer[buffer_index] = '%';
 				buffer_index++;
