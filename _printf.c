@@ -91,6 +91,11 @@ int _printf(const char *format, ...)
 				unsigned int), buffer, buffer_index, 'X');
 				i++;
 				break;
+			case 'p':
+				buffer_index = add_pointer(va_arg(args, void *),
+							  buffer, buffer_index);
+				i++;
+				break;
 			case '\0':
 				return (-1);
 			default:

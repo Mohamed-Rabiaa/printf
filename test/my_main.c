@@ -13,6 +13,8 @@ int main(void)
     int len;
     int len2;
 
+    void *addr;
+
     len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");
 
@@ -74,5 +76,8 @@ int main(void)
    _printf("%X\n", 1455);
 
    _printf("%S\n", "hi\nw");
+
+   addr = &len;
+   _printf("%p\n", addr);
    return (0);
 }
