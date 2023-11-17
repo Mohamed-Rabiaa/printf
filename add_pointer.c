@@ -13,7 +13,7 @@ int add_pointer(void *ptr, char *buffer, int buffer_index)
 	long int num;
 
 	if (!buffer)
-		return (NULL);
+		return (0);
 	if (!ptr)
 		buffer_index = add_string("(nil)", buffer, buffer_index);
 
