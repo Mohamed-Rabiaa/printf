@@ -56,6 +56,11 @@ int _printf(const char *format, ...)
 						char*), buffer, buffer_index);
 				i++;
 				break;
+			case 'R':
+				buffer_index = add_rot13ed_string(va_arg(args,
+					 char*), buffer, buffer_index);
+				i++;
+				break;
 			case '%':
 				buffer[buffer_index] = '%';
 				buffer_index++;
@@ -106,17 +111,18 @@ int _printf(const char *format, ...)
 			}
 		}
 		buffer[buffer_index] = '\0';
-	if (buffer_index == BUFF_SIZE)
-	{
-		write(1, buffer, buffer_index);
-		buffer_index = 0;
+		if (buffer_index == BUFF_SIZE)
+		{
+			write(1, buffer, buffer_index);
+			buffer_index = 0;
+		}
 	}
-}
+
 	if (buffer_index > 0)
 	{
 		buffer[buffer_index] = '\0';
 		write(1, buffer, buffer_index);
 	}
-va_end(args);
-return (buffer_index);
+	va_end(args);
+	return (buffer_index);
 }
